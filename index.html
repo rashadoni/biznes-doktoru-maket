@@ -161,6 +161,8 @@ dialog.prod { width: 100vw; max-width: none; height: 100dvh; max-height: none; m
 .pts span { font-size: 15px; color: var(--ink-soft); line-height: 1.45; display: block; margin-top: 4px; }
 @media (max-width: 720px) { .pts { grid-template-columns: minmax(0, 1fr); } }
 
+.story { width: 100%; height: auto; aspect-ratio: 16 / 9; background: var(--navy); }
+
 /* demo: counting */
 .cnt { display: grid; grid-template-columns: 190px minmax(0, 1fr) 250px; gap: 14px; background: var(--navy); color: #fff; padding: 14px; }
 .stat { background: rgba(255,255,255,.08); padding: 10px 14px; }
@@ -631,13 +633,10 @@ footer { background: var(--navy); color: #c4cfe3; font-size: 14px; padding-block
       return seq(el);
     },
     book: function (el) {
-      el.innerHTML = '<div class="two"><div class="pane"><h4>WhatsApp</h4>' +
-        '<div class="msg" data-s="1"><small>MÜŞTƏRİ</small>Salam, sabah axşam 2 nəfərlik yer var?</div>' +
-        '<div class="msg ai" data-s="2"><small>AI CAVAB</small>Salam! Sabah 19:00 və 20:30 boşdur. Hansı uyğundur?</div>' +
-        '<div class="msg" data-s="3"><small>MÜŞTƏRİ</small>19:00 olsun. Sadəcə çay içmək istəyirik.</div>' +
-        '<div class="msg ai" data-s="5"><small>AI CAVAB</small>Rezerv edildi: sabah, 19:00, 2 nəfər. Sizi gözləyirik!</div></div>' +
-        '<div class="pane"><h4>Sabah, axşam</h4><div class="slots"><div class="slot busy">17:30<small>dolu</small></div><div class="slot busy">18:15<small>dolu</small></div><div class="slot free pick" data-s="4">19:00<small class="slotlabel"></small></div><div class="slot busy">19:45<small>dolu</small></div><div class="slot free">20:30<small>boş</small></div><div class="slot busy">21:15<small>dolu</small></div></div></div></div>';
-      return seq(el);
+      el.innerHTML = '<video class="story" src="media/ai-rezerv.mp4" poster="media/ai-rezerv.jpg" controls muted loop playsinline preload="metadata" aria-label="AI Rezerv haqqında izahedici video"></video>';
+      var v = $('video', el);
+      if (!calm) { var pl = v.play(); if (pl && pl.catch) pl.catch(function () {}); }
+      return function () { v.pause(); };
     },
     price: function (el) {
       var R = [['Smartfon 128 GB', 1249, 1199], ['Noutbuk 15"', 1899, 1949], ['Televizor 55"', 1329, 1279], ['Soyuducu 300 L', 1099, 1129], ['Qulaqlıq', 149, 139]];
