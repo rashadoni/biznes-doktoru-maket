@@ -261,7 +261,10 @@ table.price { width: 100%; border-collapse: collapse; background: #fff; font-siz
 .tgroup { border-top: 3px solid var(--navy); padding-top: 10px; transition: background-color .5s; }
 .tgroup.flash { background: #f6e3cd; }
 .tgroup h3 { font-size: 19px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
-.tgroup label { display: flex; gap: 10px; align-items: flex-start; padding: 7px 0; cursor: pointer; line-height: 1.35; }
+.titem { padding: 8px 0; }
+.tgroup label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; line-height: 1.35; font-weight: 600; }
+.tinfo { margin: 3px 0 0 28px; font-size: 13px; line-height: 1.4; color: var(--ink-soft); }
+.tinfo a { color: var(--good); font-weight: 700; white-space: nowrap; }
 .tgroup input { width: 18px; height: 18px; margin: 2px 0 0; flex: none; accent-color: var(--navy); }
 .wa { margin-top: 28px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; background: #e5eadf; padding: 18px 20px; }
 .wa small { display: block; font-weight: 800; color: var(--good); font-size: 13px; }
@@ -685,7 +688,7 @@ footer { background: var(--navy); color: #c4cfe3; font-size: 14px; padding-block
   ];
   var n = 0;
   $('#tgrid').innerHTML = T.map(function (g) {
-    return '<div class="tgroup"><h3>' + esc(g[0]) + '</h3>' + g[1].map(function (t) { n++; return '<label for="t' + n + '"><input type="checkbox" id="t' + n + '" value="' + esc(t) + '"' + (n === 1 ? ' checked' : '') + '>' + esc(t) + '</label>'; }).join('') + '</div>';
+    return '<div class="tgroup"><h3>' + esc(g[0]) + '</h3>' + g[1].map(function (t) { n++; return '<div class="titem"><label for="t' + n + '"><input type="checkbox" id="t' + n + '" value="' + esc(t) + '"' + (n === 1 ? ' checked' : '') + '>' + esc(t) + '</label><p class="tinfo">Təlimlər haqqında ətraflı məlumat üçün <a href="' + waLink('Salam! ' + t + ' haqqında ətraflı məlumat almaq istəyirəm.') + '" target="_blank" rel="noopener">+994 10 311 12 64</a> nömrəsinə yaz</p></div>'; }).join('') + '</div>';
   }).join('');
   function wa() {
     var v = $$('#tgrid input:checked').map(function (c) { return c.value; });
