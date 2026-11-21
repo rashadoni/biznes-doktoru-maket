@@ -161,7 +161,7 @@ dialog.prod { width: 100vw; max-width: none; height: 100dvh; max-height: none; m
 .pts span { font-size: 15px; color: var(--ink-soft); line-height: 1.45; display: block; margin-top: 4px; }
 @media (max-width: 720px) { .pts { grid-template-columns: minmax(0, 1fr); } }
 
-.story { width: 100%; height: auto; aspect-ratio: 16 / 9; background: var(--navy); }
+.story { display: block; width: min(100%, calc((100dvh - 235px) * 16 / 9)); height: auto; aspect-ratio: 16 / 9; margin: 6px auto 0; background: var(--navy); }
 
 /* demo: counting */
 .cnt { display: grid; grid-template-columns: 190px minmax(0, 1fr) 250px; gap: 14px; background: var(--navy); color: #fff; padding: 14px; }
