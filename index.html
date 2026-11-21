@@ -239,15 +239,20 @@ table.price { width: 100%; border-collapse: collapse; background: #fff; font-siz
 /* balloons */
 .nece { position: relative; overflow: hidden; background: linear-gradient(180deg, var(--sky-deep), var(--sky)); padding-block: 54px 62px; color: #fff; }
 .nece h2 { color: #fff; text-align: center; font-size: clamp(46px, 8vw, 96px); }
-.ballons { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 860px; margin: 26px auto 0; }
+.ballons { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 900px; margin: 26px auto 0; }
+.bcol { --gap: clamp(76px, 17vh, 150px); min-width: 0; display: flex; flex-direction: column; align-items: center; }
+.answer { position: relative; margin-top: var(--gap); width: 100%; max-width: 380px; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 14px; padding: 20px; text-align: center; color: var(--ink); background: #fffdf7; box-shadow: 0 12px 22px rgba(25,40,75,.3); scroll-margin-top: calc(var(--bar) + 150px); transition: opacity .6s, transform .6s; }
+.answer::before { content: ""; position: absolute; left: 50%; bottom: 100%; height: calc(var(--gap) - 10px); border-left: 2px dashed rgba(255,255,255,.75); }
+.answer.wait { opacity: 0; transform: translateY(28px); }
+.answer p { font-size: 18px; line-height: 1.35; font-weight: 800; color: var(--navy); text-wrap: balance; }
 .ballon { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: var(--ink); animation: float 6s ease-in-out infinite; }
-.ballon:nth-child(2) { animation-delay: -2.6s; }
+.bcol:nth-child(2) .ballon { animation-delay: -2.6s; }
 @keyframes float { 50% { translate: 0 -14px; } }
 .ballon svg { width: clamp(130px, 19vw, 210px); height: auto; filter: drop-shadow(0 12px 10px rgba(25,40,75,.3)); transition: transform .25s; }
 .ballon:hover svg { transform: scale(1.05); }
 .ballon span { background: #fffdf7; padding: 12px 16px; font-weight: 700; line-height: 1.35; text-align: center; max-width: 340px; box-shadow: 0 8px 14px rgba(25,40,75,.25); }
 .nece img { position: absolute; pointer-events: none; opacity: .9; }
-@media (max-width: 560px) { .ballon span { font-size: 14px; padding: 10px; } }
+@media (max-width: 620px) { .ballons { grid-template-columns: minmax(0, 1fr); gap: 54px; } .bcol { --gap: 64px; } }
 
 /* trainings */
 .train { padding-block: 56px; background: var(--paper); }
@@ -383,14 +388,26 @@ footer { background: var(--navy); color: #c4cfe3; font-size: 14px; padding-block
   <div class="inner">
     <h2 class="big" id="h-how">Necə?</h2>
     <div class="ballons">
-      <a class="ballon" href="#telimler" data-group="0">
-        <svg viewBox="0 0 200 270" aria-hidden="true"><path d="M100 196 Q84 232 104 268" fill="none" stroke="#fff" stroke-width="2"/><ellipse cx="100" cy="98" rx="86" ry="96" fill="#1c2a4c"/><path d="M90 192 L110 192 L104 204 L96 204Z" fill="#1c2a4c"/><ellipse cx="66" cy="60" rx="17" ry="27" fill="#fff" opacity=".28" transform="rotate(24 66 60)"/></svg>
-        <span>AI proqramlaşdırma ilə</span>
-      </a>
-      <a class="ballon" href="#telimler" data-group="1">
-        <svg viewBox="0 0 200 270" aria-hidden="true"><path d="M100 196 Q116 232 96 268" fill="none" stroke="#fff" stroke-width="2"/><ellipse cx="100" cy="98" rx="86" ry="96" fill="#e7a76c"/><path d="M90 192 L110 192 L104 204 L96 204Z" fill="#e7a76c"/><ellipse cx="66" cy="60" rx="17" ry="27" fill="#fff" opacity=".4" transform="rotate(24 66 60)"/></svg>
-        <span>AI-dan əldə edilən datalarla necə hərəkət etməlisən bilmirsən? Korporativ təlimlərə qoşul.</span>
-      </a>
+      <div class="bcol">
+        <a class="ballon" href="#cavab-1">
+          <svg viewBox="0 0 200 270" aria-hidden="true"><path d="M100 196 Q84 232 104 268" fill="none" stroke="#fff" stroke-width="2"/><ellipse cx="100" cy="98" rx="86" ry="96" fill="#1c2a4c"/><path d="M90 192 L110 192 L104 204 L96 204Z" fill="#1c2a4c"/><ellipse cx="66" cy="60" rx="17" ry="27" fill="#fff" opacity=".28" transform="rotate(24 66 60)"/></svg>
+          <span>AI proqramlaşdırma ilə nə edə bilərsən?</span>
+        </a>
+        <div class="answer" id="cavab-1">
+          <p>Biznes Doktoruna müraciət et. Biznesinə uyğun individuallaşdırılmış AI həllər hazırlayaq.</p>
+          <a class="btn" id="wa-ai" href="https://wa.me/994103111264" target="_blank" rel="noopener">WhatsApp-da müraciət et</a>
+        </div>
+      </div>
+      <div class="bcol">
+        <a class="ballon" href="#cavab-2">
+          <svg viewBox="0 0 200 270" aria-hidden="true"><path d="M100 196 Q116 232 96 268" fill="none" stroke="#fff" stroke-width="2"/><ellipse cx="100" cy="98" rx="86" ry="96" fill="#e7a76c"/><path d="M90 192 L110 192 L104 204 L96 204Z" fill="#e7a76c"/><ellipse cx="66" cy="60" rx="17" ry="27" fill="#fff" opacity=".4" transform="rotate(24 66 60)"/></svg>
+          <span>AI-dan əldə edilən datalarla necə hərəkət etməlisən bilmirsən?</span>
+        </a>
+        <div class="answer" id="cavab-2">
+          <p>Korporativ Təlimlərə qoşul</p>
+          <a class="btn" href="#telimler">Təlimlərə bax</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -400,8 +417,8 @@ footer { background: var(--navy); color: #c4cfe3; font-size: 14px; padding-block
   <p class="lead">Maraqlı olanları seç, hazır mesajla WhatsApp-da yaz.</p>
   <div class="tgrid" id="tgrid"></div>
   <div class="wa">
-    <div><small>WhatsApp mesajı</small><p id="wa-text"></p><em>Maketdə göndərilmir. Nömrə qoşulanda düymə WhatsApp-ı açacaq.</em></div>
-    <button class="btn" type="button" aria-disabled="true">WhatsApp-da yaz</button>
+    <div><small>WhatsApp mesajı</small><p id="wa-text"></p><em>WhatsApp: +994 10 311 12 64</em></div>
+    <a class="btn" id="wa-train" href="https://wa.me/994103111264" target="_blank" rel="noopener">WhatsApp-da yaz</a>
   </div>
 </div></section>
 
@@ -441,8 +458,8 @@ footer { background: var(--navy); color: #c4cfe3; font-size: 14px; padding-block
 
 <dialog class="svc" id="svc" aria-labelledby="s-title">
   <h2 id="s-title"></h2><ul id="s-list"></ul>
-  <div class="wa"><div><small>WhatsApp mesajı</small><p id="s-wa"></p><em>Maketdə göndərilmir. Nömrə qoşulanda düymə WhatsApp-ı açacaq.</em></div></div>
-  <div class="acts"><button class="btn" type="button" aria-disabled="true">WhatsApp-da yaz</button><button class="btn ghost" type="button" id="s-close">Bağla</button></div>
+  <div class="wa"><div><small>WhatsApp mesajı</small><p id="s-wa"></p><em>WhatsApp: +994 10 311 12 64</em></div></div>
+  <div class="acts"><a class="btn" id="s-link" href="https://wa.me/994103111264" target="_blank" rel="noopener">WhatsApp-da yaz</a><button class="btn ghost" type="button" id="s-close">Bağla</button></div>
 </dialog>
 
 <script>
@@ -451,11 +468,12 @@ footer { background: var(--navy); color: #c4cfe3; font-size: 14px; padding-block
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var esc = function (t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; };
+  var waLink = function (t) { return 'https://wa.me/994103111264?text=' + encodeURIComponent(t); };
 
   /* doors */
   var SERVICES = {
-    0: { name: 'Ənənəvi Marketinq', list: ['A-dan Z-ə marketinq strategiyası', 'İnsightın tapılması', 'Komunikasiya planı', 'Mövqeləndirmə planı', 'Name, loqo, branding konsepti', 'Layihə yaradılması və icrası', 'Brend günləri', 'Brend təqdimatı', 'Trade marketinq', 'Brendə uyğun forum təşkili', 'Hədəf kütlə klubları: analar klubu, ustalar klubu'] },
-    1: { name: 'Rəqəmsal Marketinq', list: ['İnfluenser marketinq', 'Meta Ads', 'SEO'] }
+    0: { name: 'Ənənəvi Marketinq', list: ['A-dan Z-ə Marketinq Strategiyası', 'İnsightın tapılması', 'Komunikasiya planı', 'Mövqeləndirmə planı', 'Name, Loqo, branding konsept şəklində', 'Layihə yaradılması və icrası', 'Brend Təqdimatı', 'Brendə uyğun targetingdən ibarət forum təşkili', 'Hədəf kütlə klublarının yaradılması (analar klubu, ustalar klubu)'] },
+    1: { name: 'Rəqəmsal Marketinq', list: ['İnfluenser Marketinq', 'Meta Ads', 'SEO'] }
   };
   var svc = $('#svc');
   $$('.door').forEach(function (d) {
@@ -467,7 +485,8 @@ footer { background: var(--navy); color: #c4cfe3; font-size: 14px; padding-block
         var s = SERVICES[n];
         $('#s-title').textContent = s.name;
         $('#s-list').innerHTML = s.list.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('');
-        $('#s-wa').textContent = 'Salam! ' + s.name + ' xidmətləri ilə maraqlanıram.';
+        var txt = 'Salam! ' + s.name + ' xidmətləri ilə maraqlanıram.';
+        $('#s-wa').textContent = txt; $('#s-link').href = waLink(txt);
         svc.showModal();
       }, calm ? 0 : 720);
     });
@@ -670,15 +689,18 @@ footer { background: var(--navy); color: #c4cfe3; font-size: 14px; padding-block
   }).join('');
   function wa() {
     var v = $$('#tgrid input:checked').map(function (c) { return c.value; });
-    $('#wa-text').textContent = v.length ? 'Salam! Bu təlimlərlə maraqlanıram: ' + v.join(', ') + '.' : 'Salam! Korporativ təlimlərlə maraqlanıram.';
+    var txt = v.length ? 'Salam! Bu təlimlərlə maraqlanıram: ' + v.join(', ') + '.' : 'Salam! Korporativ təlimlərlə maraqlanıram.';
+    $('#wa-text').textContent = txt; $('#wa-train').href = waLink(txt);
   }
   $('#tgrid').addEventListener('change', wa); wa();
-  $$('.ballon').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var g = $('.tgroup');
-      g.classList.add('flash'); setTimeout(function () { g.classList.remove('flash'); }, 1800);
-    });
-  });
+  $('#wa-ai').href = waLink('Salam! Biznesimə uyğun AI həlləri ilə maraqlanıram.');
+  var answers = $$('.answer');
+  if (!calm && 'IntersectionObserver' in window) {
+    var seen = new IntersectionObserver(function (list) {
+      list.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove('wait'); seen.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: .15 });
+    answers.forEach(function (x) { x.classList.add('wait'); seen.observe(x); });
+  }
 
   /* box */
   var bs = $('#qutu'), bx = $('#box');
